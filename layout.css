@@ -85,6 +85,41 @@ body {
 }
 
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  justify-content: center; 
+}
+
+/* Best Sellers items */
+.col-4 {
+  flex: 1 1 220px;
+  max-width: 250px; 
+  margin: 10px;
+  text-align: center;
+}
+
+.col-4 img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* New Set Menu items */
+.col-6 {
+  flex: 1 1 300px;
+  max-width: 600px;
+  margin: 10px;
+}
+
+.col-6 img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+
 /* BUTTON */
 .btn {
   display: inline-block;
