@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samgyup Menu</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Samgyup Palace Logo">
+  </div>
+  <div class="back-btn">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</header>
+
+<div id="basket-icon" onclick="toggleCart()">
+  <i class="fas fa-shopping-basket"></i>
+  <span id="basket-count">0</span>
+</div>
+
+<main>
+  <!-- menu section -->
+  <section>
+    <h2>Beef (450g)</h2>
+    <div id="beef" class="menu-container"></div>
+  </section>
+
+  <section>
+    <h2>Pork (400g)</h2>
+    <div id="pork" class="menu-container"></div>
+  </section>
+
+  <section>
+    <h2>Side Dish</h2>
+    <div id="side" class="menu-container"></div>
+  </section>
+
+  <section>
+    <h2>Bundle</h2>
+    <div id="bundle" class="menu-container"></div>
+  </section>
+</main>
+
+<!-- CART POP-UP -->
+<div id="cart-popup">
+  <div id="cart-items"></div>
+  <hr>
+  <p>Total: ₱<span id="cart-total">0</span></p>
+  <button onclick="checkout()">Checkout</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
