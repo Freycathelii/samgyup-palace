@@ -1,0 +1,100 @@
+/* CART & MENU LOGIC */
+
+const menu = [
+  // Beef - 4 items
+  { name:"Beef Short Rib", price:299, img:"https://i.imgur.com/NR6lw9A.jpg", category:"beef" },
+  { name:"Beef Belly", price:349, img:"https://i.imgur.com/3v5gLwE.jpg", category:"beef" },
+  { name:"Beef Tongue", price:399, img:"https://i.imgur.com/ABC123.jpg", category:"beef" },
+  { name:"Beef Brisket", price:279, img:"https://i.imgur.com/XYZ456.jpg", category:"beef" },
+
+  // Pork - 4 items
+  { name:"Pork Belly", price:199, img:"https://i.imgur.com/5gHqL3F.jpg", category:"pork" },
+  { name:"Pork Shoulder", price:219, img:"https://i.imgur.com/DEF789.jpg", category:"pork" },
+  { name:"Pork Ribs", price:249, img:"https://i.imgur.com/GHI101.jpg", category:"pork" },
+  { name:"Pork Ham", price:179, img:"https://i.imgur.com/JKL112.jpg", category:"pork" },
+
+  // Plain Meat - 4 items
+  { name:"Chicken Breast", price:149, img:"https://i.imgur.com/MNO131.jpg", category:"plain" },
+  { name:"Chicken Thigh", price:129, img:"https://i.imgur.com/PQR415.jpg", category:"plain" },
+  { name:"Fish Fillet", price:159, img:"https://i.imgur.com/STU161.jpg", category:"plain" },
+  { name:"Shrimp", price:199, img:"https://i.imgur.com/VWX171.jpg", category:"plain" },
+
+  // Side Dish - 7 items
+  { name:"Kimchi", price:50, img:"kimchi.jpg", category:"side" },
+  { name:"Rice", price:30, img:"https://i.imgur.com/AAA111.jpg", category:"side" },
+  { name:"Salad", price:70, img:"https://i.imgur.com/BBB222.jpg", category:"side" },
+  { name:"Seaweed Soup", price:60, img:"https://i.imgur.com/CCC333.jpg", category:"side" },
+  { name:"Pickled Radish", price:40, img:"https://i.imgur.com/DDD444.jpg", category:"side" },
+  { name:"Cheese", price:90, img:"https://i.imgur.com/EEE555.jpg", category:"side" },
+  { name:"Garlic Butter", price:35, img:"https://i.imgur.com/FFF666.jpg", category:"side" },
+
+  // Bundle - 8 items
+  { name:"Set A", price:399, img:"https://i.imgur.com/7QxOZtC.jpg", category:"bundle" },
+  { name:"Set B", price:499, img:"https://i.imgur.com/2HlfkFt.jpg", category:"bundle" },
+  { name:"Set C", price:599, img:"https://i.imgur.com/GGG777.jpg", category:"bundle" },
+  { name:"Set D", price:699, img:"https://i.imgur.com/HHH888.jpg", category:"bundle" },
+  { name:"Family Set", price:1299, img:"https://i.imgur.com/III999.jpg", category:"bundle" },
+  { name:"Couple Set", price:699, img:"https://i.imgur.com/JJJ000.jpg", category:"bundle" },
+  { name:"Party Set", price:1499, img:"https://i.imgur.com/KKK111.jpg", category:"bundle" },
+];
+
+const basketCount = document.getElementById("basket-count");
+const cartPopup = document.getElementById("cart-popup");
+const cartItemsContainer = document.getElementById("cart-items");
+const cartTotalElem = document.getElementById("cart-total");
+
+let cart=[];
+
+// Auto-render menu by category
+["beef","pork","plain","side","bundle"].forEach(cat=>{
+  const container = document.getElementById(cat);
+  if(container){
+    const items = menu.filter(item=>item.category===cat);
+    items.forEach((item,index)=>{
+      const div = document.createElement("div");
+      div.className="menu-item";
+      div.innerHTML=`
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>₱${item.price}</p>
+        <button onclick="addToCart(${menu.indexOf(item)})"><i class="fas fa-cart-plus"></i></button>
+      `;
+      container.appendChild(div);
+    });
+  }
+});
+
+// CART FUNCTIONS
+function addToCart(index){
+  const item = menu[index];
+  const existing = cart.find(i=>i.name===item.name);
+  if(existing) existing.quantity++;
+  else cart.push({...item, quantity:1});
+  updateCart();
+}
+
+function updateCart(){
+  basketCount.textContent = cart.reduce((acc,i)=>acc+i.quantity,0);
+  cartItemsContainer.innerHTML="";
+  let total=0;
+  cart.forEach(item=>{
+    total+=item.price*item.quantity;
+    const p = document.createElement("p");
+    p.innerHTML=`${item.name} x ${item.quantity} <span>₱${item.price*item.quantity}</span>`;
+    cartItemsContainer.appendChild(p);
+  });
+  cartTotalElem.textContent=total;
+}
+
+function toggleCart(){
+  if(cartPopup.style.display==="block") cartPopup.style.display="none";
+  else cartPopup.style.display="block";
+}
+
+function checkout(){
+  if(cart.length===0){ alert("Cart is empty!"); return; }
+  alert("Already checked out!");
+  cart=[];
+  updateCart();
+  toggleCart();
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF=8">
+	<meta name ="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>All </title>
+	<link rel="stylesheet" href="layout.css">
+		<link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class = "navbar">
+			<div class="logo">
+				<img src="logo.jpg" width="125px">
+			</div>
+		
+			<nav>
+				<ul id = "navimenu">
+				<li><a href="">Home</a></li>
+ 				<li><a href="">Menu</a></li>
+ 				<li><a href="">Products</a></li>
+ 				<li><a href="">About</a></li>
+ 				<li><a href="">Contact</a></li>
+				</ul>
+			</nav>
+				<img src="pig.png" width="30px" height="30px">
+				<img src="menu.png" class="menu-icon" onclick="menushake">
+		</div>
+	</div>
+
+<!-------- cart items------>
+	<div class="small-container-basket">
+		<table>
+		<tr>
+			<th>Bundle</th>
+			<th>Quantity</th>
+			<th>Subtotal</th>
+		</tr>
+		<tr>
+			<td>
+				<div class="basket-deets">
+					<img src="enoki.png">
+				<div>
+					<p>Sulit Package</p>
+					<small>Price: Php 799.00</small>
+					<br>
+					<a href="">Remove</a>
+				</div>
+			</div>
+			</td>
+			<td><input type="number" value="1"></td>
+			<td>Php 1499.00</td
+		</tr>
+		<tr>
+			<td>
+				<div class="basket-deets">
+					<img src="bulgogi.png">
+				<div>
+					<p>Sulit Package</p>
+					<small>Price: Php 899.00</small>
+					<br>
+					<a href="">Remove</a>
+				</div>
+			</div>
+			</td>
+			<td><input type="number" value="1"></td>
+			<td>Php 1499.00</td
+		</tr>
+		<tr>
+			<td>
+				<div class="basket-deets">
+					<img src="enoki.png">
+				<div>
+					<p>Sulit Package</p>
+					<small>Price: Php 499.00</small>
+					<br>
+					<a href="">Remove</a>
+				</div>
+			</div>
+			</td>
+			<td><input type="number" value="1"></td>
+			<td>Php 1499.00</td
+		</tr>
+
+	</table>
+
+<!--------- footer ------->
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col-1">
+				    <h3>Add text here</h3>
+					<p>Add text here
+				</div>
+			</div>
+			<hr>
+				<p class="Copyright">Copyright 2020 - Easy Tutorial</p>
+		</div>
+	</div>
+
+<!--------- toggle menu ----------->
+	<script>
+		var navimenu = document.getElementById("navimenu");
+
+	navimenu.style.maxHeight = 0px;
+	
+	function menu shake {
+		if (navimenu.style.maxHeight == 0px;)
+			{
+				navimenu.style.maxHeight = "200px";
+			}
+		else
+			{
+				navimenu.style.maxHeight = "0px";
+			}
+	}
+	</script>
+
+</body>
+</html>
